@@ -1,0 +1,218 @@
+/* Container principal da Sidebar */
+#custom-excalidraw-sidebar {
+    position: fixed; top: 0; left: 0; height: 100vh; width: 15px;
+    --sidebar-bg: #ffffff; --sidebar-text: #1b1b1b; --sidebar-muted: #6b6b6b;
+    --sidebar-border: #e1e1e1; --sidebar-hover: #f0f0f0; --sidebar-active: #e7e7e7;
+    --sidebar-control-bg: #f8f8f8; --sidebar-tooltip-bg: #1b1b1b;
+    --sidebar-tooltip-text: #ffffff;
+    background-color: var(--sidebar-bg); color: var(--sidebar-text); z-index: 9999999;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-right: 1px solid var(--sidebar-border); box-shadow: 2px 0 10px rgba(0,0,0,0.18);
+    display: flex; flex-direction: column;
+    font-size: 13px; color-scheme: light;
+}
+
+#custom-excalidraw-sidebar[data-theme="dark"] {
+    --sidebar-bg: #1e1e1e; --sidebar-text: #f1f1f1; --sidebar-muted: #a6a6a6;
+    --sidebar-border: #3b3b3b; --sidebar-hover: #2c2c2c; --sidebar-active: #343434;
+    --sidebar-control-bg: #282828; --sidebar-tooltip-bg: #f1f1f1;
+    --sidebar-tooltip-text: #1b1b1b;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5); color-scheme: dark;
+}
+
+#custom-excalidraw-sidebar:hover, 
+#custom-excalidraw-sidebar.pinned { width: 300px; }
+
+#custom-excalidraw-sidebar .sidebar-content {
+    opacity: 0; transition: opacity 0.2s ease; width: 300px;
+    padding: 15px; box-sizing: border-box;
+    display: flex; flex-direction: column; height: 100vh;
+}
+
+#custom-excalidraw-sidebar:hover .sidebar-content,
+#custom-excalidraw-sidebar.pinned .sidebar-content { opacity: 1; }
+
+/* Cabeçalho compacto: ações monocromáticas à esquerda e pin à direita */
+.sidebar-header {
+    display: flex; align-items: center; justify-content: space-between;
+    min-height: 30px; margin-bottom: 12px; flex-shrink: 0;
+}
+
+.sidebar-actions { display: flex; align-items: center; gap: 3px; }
+
+.sidebar-icon-btn,
+.pin-button,
+.footer-icon-btn {
+    position: relative; border: 0; border-radius: 5px; padding: 3px;
+    background: transparent; color: var(--sidebar-text); cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+    line-height: 1; transition: background-color 0.2s, opacity 0.2s;
+}
+
+.sidebar-icon-btn { width: 23px; height: 20px; font-size: 12px; }
+.sidebar-icon-btn:hover { background-color: var(--sidebar-hover); }
+#btn-new-file:hover, #btn-delete-file:hover, #btn-select-folder:hover { background-color: var(--sidebar-hover); }
+
+.pin-button {
+    width: 23px; height: 20px; font-size: 12px;
+    opacity: 0.45;
+}
+
+.pin-button:hover { background-color: var(--sidebar-hover); opacity: 1 !important; }
+
+/* Tooltip textual para os ícones de ação */
+[data-tooltip]::after {
+    content: attr(data-tooltip); position: absolute; top: calc(100% + 7px); left: 0;
+    z-index: 10; max-width: 210px; padding: 5px 7px; border-radius: 4px;
+    background: var(--sidebar-tooltip-bg); color: var(--sidebar-tooltip-text);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-size: 11px; font-weight: normal; line-height: 1.2; white-space: nowrap;
+    pointer-events: none; opacity: 0; transform: translateY(-2px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+    opacity: 1; transform: translateY(0);
+}
+
+/* Configuração discreta no rodapé: o seletor só aparece após clicar no globo */
+.sidebar-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; padding-top: 8px; flex-shrink: 0;
+}
+
+.language-control { display: flex; align-items: center; gap: 6px; margin: 0; }
+.footer-icon-btn { width: 24px; height: 24px; font-size: 16px; }
+.footer-icon-btn:hover { background-color: var(--sidebar-hover); }
+
+#language-select {
+    display: none; min-width: 145px; border: 1px solid var(--sidebar-border); border-radius: 5px;
+    padding: 4px 6px; background: var(--sidebar-control-bg); color: var(--sidebar-text); font-size: 11px;
+}
+
+.language-control.open #language-select { display: block; }
+#language-select:focus { outline: 1px solid var(--sidebar-text); }
+
+#sidebar-brand {
+    color: var(--sidebar-muted); font-size: 9px; font-weight: normal; white-space: nowrap;
+    letter-spacing: 0.15px;
+}
+
+.menu-icon {
+    width: 18px; height: 18px; display: block; fill: none;
+    stroke: currentColor; stroke-width: 1.7; stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Área de Rolagem Exclusiva para a Árvore de Arquivos */
+#file-tree {
+    flex: 1; overflow-y: auto; overflow-x: hidden; margin-bottom: 10px;
+}
+#file-tree::-webkit-scrollbar { width: 6px; }
+#file-tree::-webkit-scrollbar-thumb { background: var(--sidebar-muted); border-radius: 3px; }
+
+/* Árvore de Arquivos - RECUO MENOR E RESPIRO VERTICAL AGRADÁVEL */
+#file-tree ul { list-style-type: none; padding-left: 8px; margin: 0; } /* Recuo horizontal reduzido para 8px */
+#file-tree > ul { padding-left: 0; }
+#file-tree li {
+    cursor: pointer; padding: 4px 6px; border-radius: 4px; /* Padding vertical ajustado para 4px */
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; user-select: none;
+    border-left: 3px solid transparent; transition: all 0.2s;
+    margin: 0; line-height: 1.3; /* Texto com respiro mais suave (1.3) */
+}
+#file-tree li:hover { background-color: var(--sidebar-hover); }
+
+.active-file {
+    background-color: var(--sidebar-active) !important;
+    border-left: 3px solid var(--sidebar-text) !important;
+    font-weight: bold; color: var(--sidebar-text);
+}
+
+.folder-icon { color: #dcb67a; margin-right: 5px; }
+.file-icon { color: #6965db; margin-right: 5px; }
+
+/* Rodapé Fixo */
+#active-file-status {
+    font-size: 10px;  
+    color: var(--sidebar-muted); padding-top: 10px;
+    border-top: 1px solid var(--sidebar-border); word-break: break-all;
+    flex-shrink: 0; 
+}
+
+/* Menu contextual para ações futuras sobre arquivos e pastas */
+.file-context-menu {
+    --sidebar-bg: #ffffff; --sidebar-text: #1b1b1b; --sidebar-border: #e1e1e1;
+    --sidebar-hover: #f0f0f0;
+    position: fixed; min-width: 150px; padding: 4px; box-sizing: border-box;
+    background: var(--sidebar-bg); color: var(--sidebar-text);
+    border: 1px solid var(--sidebar-border); border-radius: 6px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.22); z-index: 10000001;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+}
+
+.file-context-menu[data-theme="dark"],
+.rename-dialog-overlay[data-theme="dark"] {
+    --sidebar-bg: #1e1e1e; --sidebar-text: #f1f1f1; --sidebar-border: #3b3b3b;
+    --sidebar-hover: #2c2c2c;
+}
+
+.file-context-menu button {
+    display: block; width: 100%; padding: 7px 10px; border: 0; border-radius: 4px;
+    background: transparent; color: inherit; text-align: left; cursor: pointer;
+    font: inherit; font-size: 13px;
+}
+.file-context-menu button:hover,
+.file-context-menu button:focus-visible { background: var(--sidebar-hover); outline: none; }
+.file-context-menu [hidden] { display: none !important; }
+
+/* Diálogo próprio para manter Cancelar/Renomear consistentes entre navegadores */
+.rename-dialog-overlay {
+    --sidebar-bg: #ffffff; --sidebar-text: #1b1b1b; --sidebar-muted: #6b6b6b;
+    --sidebar-border: #e1e1e1; --sidebar-hover: #f0f0f0;
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    padding: 20px; box-sizing: border-box; background: rgba(0,0,0,0.35);
+    color: var(--sidebar-text); z-index: 10000002;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+}
+.rename-dialog-overlay[hidden],
+.file-context-menu[hidden] { display: none !important; }
+.rename-dialog {
+    width: min(360px, 100%); padding: 20px; box-sizing: border-box;
+    background: var(--sidebar-bg); border: 1px solid var(--sidebar-border);
+    border-radius: 8px; box-shadow: 0 12px 34px rgba(0,0,0,0.28);
+}
+.rename-dialog-title { margin: 0 0 16px; font-size: 17px; font-weight: 600; }
+.rename-dialog-label { display: block; color: var(--sidebar-muted); font-size: 12px; }
+.rename-dialog-input {
+    display: block; width: 100%; margin-top: 7px; padding: 8px 9px; box-sizing: border-box;
+    border: 1px solid var(--sidebar-border); border-radius: 5px;
+    background: var(--sidebar-bg); color: var(--sidebar-text); font: inherit;
+}
+.rename-dialog-input:focus { outline: 1px solid var(--sidebar-text); }
+.rename-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+.rename-dialog-actions button {
+    padding: 7px 12px; border: 1px solid var(--sidebar-border); border-radius: 5px;
+    background: transparent; color: var(--sidebar-text); cursor: pointer; font: inherit;
+}
+.rename-dialog-actions button:hover { background: var(--sidebar-hover); }
+.rename-dialog-confirm { background: var(--sidebar-text) !important; color: var(--sidebar-bg) !important; }
+.rename-dialog-actions button:disabled { cursor: wait; opacity: 0.6; }
+
+/* =========================================================
+   ANIMAÇÃO DO EXCALIDRAW (DESLOCAMENTO DO APLICATIVO)
+   ========================================================= */
+.excalidraw-container {
+    left: 15px !important;
+    width: calc(100% - 15px) !important;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body.sidebar-active .excalidraw-container {
+    left: 300px !important;
+    width: calc(100% - 300px) !important;
+}
