@@ -2,13 +2,13 @@
 
 > Uma barra lateral local para organizar, abrir e salvar projetos do [Excalidraw](https://excalidraw.com/) em pastas do computador.
 
-**Versão inicial:** `v0.1.0` · [Repositório no GitHub](https://github.com/leonardomack/excalidraw-explorer)
+**Versão atual:** `v0.1.1` · [Repositório no GitHub](https://github.com/leonardomack/excalidraw-explorer)
 
 [![Latest Release](https://img.shields.io/github/v/release/leonardomack/excalidraw-explorer?label=latest%20release)](https://github.com/leonardomack/excalidraw-explorer/releases/latest)
 
-[Baixar a release v0.1.0](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.0)
+[Baixar a release v0.1.1](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.1)
 
-> A versão 0.1.0 inclui navegação local, abertura e salvamento de desenhos, ações contextuais para renomear, duplicar e excluir arquivos, criação de novas pastas e diálogos com tipografia consistente. O projeto ainda possui limitações conhecidas relacionadas ao formato dos arquivos, recursos incorporados e compatibilidade com futuras mudanças do Excalidraw.
+> A versão 0.1.1 inclui persistência de imagens, navegação entre pastas e arquivos e manutenção de projetos com criação, renomeação, duplicação, salvamento e exclusão. O projeto ainda possui limitações conhecidas relacionadas ao formato dos arquivos, ao tamanho de imagens incorporadas e à compatibilidade com futuras mudanças do Excalidraw.
 
 **Contribuidor:** [leonardomack](https://github.com/leonardomack)
 
@@ -36,6 +36,7 @@ O Excalidraw é uma ferramenta de desenho e quadro branco digital acessível pel
 - permite renomear arquivos e pastas pela barra lateral;
 - permite duplicar e excluir arquivos pelo menu contextual;
 - permite criar novas pastas em áreas vazias da árvore;
+- preserva imagens e seus arquivos binários associados nos projetos salvos;
 - permite excluir o arquivo ativo mantendo uma cópia `.exw.deleted`.
 
 O objetivo é manter os desenhos organizados no disco, sem um servidor ou banco de dados próprio do projeto.
@@ -330,13 +331,13 @@ Este projeto é distribuído sob a [Licença MIT](./LICENSE), que permite usar, 
 
 ## English
 
-**Initial version:** `v0.1.0` · [View the repository on GitHub](https://github.com/leonardomack/excalidraw-explorer)
+**Current version:** `v0.1.1` · [View the repository on GitHub](https://github.com/leonardomack/excalidraw-explorer)
 
 [![Latest Release](https://img.shields.io/github/v/release/leonardomack/excalidraw-explorer?label=latest%20release)](https://github.com/leonardomack/excalidraw-explorer/releases/latest)
 
-[Download release v0.1.0](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.0)
+[Download release v0.1.1](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.1)
 
-> Version 0.1.0 includes local navigation, drawing opening and saving, contextual actions for renaming, duplicating and deleting files, new-folder creation, and dialogs with consistent typography. The project still has known limitations related to the file format, embedded resources and compatibility with future Excalidraw changes.
+> Version 0.1.1 includes image persistence, navigation between folders and files, and project maintenance through file creation, renaming, duplication, saving and deletion. The project still has known limitations related to the file format, embedded image size and compatibility with future Excalidraw changes.
 
 **Contributor:** [leonardomack](https://github.com/leonardomack)
 
@@ -358,6 +359,7 @@ The add-on provides:
 - renaming files and folders from the sidebar;
 - duplicating and deleting files from the contextual menu;
 - creating new folders in empty areas of the tree;
+- preserving images and their associated binary files in saved projects;
 - deletion with a `.exw.deleted` copy created first.
 
 The goal is to keep Excalidraw drawings organized on the local disk without adding a project-specific server or database.
