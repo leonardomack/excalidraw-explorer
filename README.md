@@ -155,7 +155,7 @@ O arquivo ativo recebe uma marca visual e aparece no rodapé da barra lateral. A
 
 #### Criar um arquivo
 
-Clique em **Novo**. O navegador exibirá o seletor nativo para salvar um arquivo, com `Novo_Projeto.exw` como nome sugerido.
+Clique em **Novo**. Com uma pasta de projetos conectada, o complemento abre um diálogo para informar o nome e cria o arquivo na raiz com o formato `yyyy-mm-dd Nome.exw`. A extensão `.exw` é adicionada automaticamente. Sem uma pasta conectada, o seletor nativo continua disponível como fallback.
 
 Para que o novo projeto apareça na árvore, salve-o dentro da pasta de projetos selecionada ou em uma de suas subpastas. O arquivo é criado como um JSON vazio compatível com a versão 2 do formato do Excalidraw e é aberto imediatamente.
 
@@ -163,10 +163,10 @@ Para que o novo projeto apareça na árvore, salve-o dentro da pasta de projetos
 
 Há duas formas de salvar:
 
-- **Automático:** quando o Excalidraw atualiza a chave `localStorage` chamada `excalidraw`, o script aguarda 1,5 segundo e grava o estado no arquivo ativo. Esse atraso reduz a quantidade de escritas durante uma sequência de alterações.
+- **Automático:** quando o Excalidraw atualiza a chave `localStorage` chamada `excalidraw`, o script aguarda 1,5 segundo e grava o estado no arquivo ativo. Esse atraso reduz a quantidade de escritas durante uma sequência de alterações e permite que imagens recém-inseridas terminem de ser persistidas.
 - **Manual:** pressione `Ctrl+S` no Windows/Linux ou `Cmd+S` no macOS. O script intercepta o atalho e grava imediatamente.
 
-O rodapé mostra mensagens como `Auto-Salvo` e `Salvo` por alguns instantes. O arquivo salvo contém `elements`, `appState`, `type`, `version` e `source`.
+O rodapé mostra mensagens como `Auto-Salvo` e `Salvo` por alguns instantes. O arquivo salvo contém `elements`, `appState`, `type`, `version`, `source` e os arquivos binários referenciados em `files`. O salvamento automático e o manual usam exatamente a mesma rotina.
 
 #### Excluir um arquivo
 
@@ -178,7 +178,7 @@ meu-projeto.exw.deleted
 
 Essa cópia é uma medida de recuperação manual: não existe uma função de restauração na interface. Para tentar recuperar o arquivo, copie ou renomeie a versão `.exw.deleted` para `.exw` e verifique o conteúdo antes de abrir. Ao excluir novamente um arquivo com o mesmo nome, a cópia `.deleted` pode ser sobrescrita.
 
-Pastas só podem ser excluídas quando não contêm arquivos. Em uma área vazia da árvore, clique com o botão direito e selecione **Nova Pasta** para criar uma pasta; nomes já existentes são rejeitados.
+Pastas só podem ser excluídas quando não contêm arquivos. Clique com o botão direito sobre uma pasta e selecione **Novo** para criar um arquivo dentro dela. Em uma área vazia da árvore, selecione **Novo** para criar o arquivo na raiz da pasta selecionada ou **Nova Pasta** para criar uma pasta; nomes já existentes são rejeitados.
 
 #### Renomear arquivos e pastas
 
@@ -206,12 +206,15 @@ O projeto usa a extensão `.exw` como convenção para “Excalidraw Workspace�
 }
 ```
 
-No salvamento, o script lê:
+No salvamento, o script obtém:
 
-- `localStorage["excalidraw"]` para os elementos do desenho;
-- `localStorage["excalidraw-state"]` para o estado da aplicação.
+- `elements` e `appState` pela API imperativa oficial do Excalidraw quando ela está acessível;
+- `localStorage["excalidraw"]` e `localStorage["excalidraw-state"]` apenas como fallback/estado serializável;
+- `BinaryFiles` por `getFiles()` e, para arquivos ausentes ou ainda em carregamento, pelo armazenamento oficial IndexedDB `files-db`/`files-store` do Excalidraw.
 
-Em seguida, escreve um novo JSON no arquivo local. O código atual grava `files: {}`; por isso, imagens incorporadas, arquivos anexados e outros recursos binários podem não ser preservados pelo salvamento automático/manual. Para desenhos que usam esses recursos, faça cópias de segurança e valide o arquivo resultante antes de depender dele como única cópia.
+Em seguida, escreve um novo JSON no arquivo local. Para cada `fileId` referenciado por uma imagem, `files` preserva o registro oficial, incluindo `mimeType`, `id`, `dataURL`, `created` e metadados como `lastRetrieved` e `version` quando existirem. Os dados binários não são colocados em cookies nem copiados para `localStorage`.
+
+Ao abrir um `.exw`, o evento de arrastar/soltar continua sendo usado para carregar a cena. O script também entrega os registros de `files` à API `addFiles()` quando disponível; assim, arquivos que já contenham `files: {}` ou que não tenham `files` continuam compatíveis, e arquivos com imagens restauram os dados associados aos seus `fileId`s.
 
 ### Arquivo temporário automático
 
@@ -234,9 +237,11 @@ Essas alterações parecem ter sido incluídas para impedir recursos de rede e e
 
 ### Limitações conhecidas
 
-- O projeto depende de seletores internos do Excalidraw, especialmente `.excalidraw-container`, `localStorage["excalidraw"]` e `localStorage["excalidraw-state"]`. Uma mudança no Excalidraw pode exigir atualização do script.
+- O projeto depende de seletores internos do Excalidraw, especialmente `.excalidraw-container`; as chaves de `localStorage` são usadas apenas como fallback/estado serializável. Uma mudança no Excalidraw pode exigir atualização do script.
 - O filtro da árvore exibe somente arquivos `.exw`.
-- O salvamento substitui `files` por um objeto vazio; recursos anexados podem ser perdidos.
+- As imagens são incorporadas como `dataURL` no JSON; imagens grandes aumentam o tamanho do `.exw`, o tempo de serialização e o uso de memória, e o navegador/sistema de arquivos pode impor limites práticos.
+- Se um `fileId` ainda referenciado não puder ser recuperado pela API ou pelo IndexedDB oficial, o script não sobrescreve o arquivo existente e informa os IDs ausentes, evitando substituir uma cópia válida por uma cena sem imagem.
+- Os nomes `files-db`/`files-store` são internos do Excalidraw e podem mudar em versões futuras. A API pública `getFiles()` é tentada primeiro, mas o fallback poderá exigir atualização.
 - O arquivo criado pelo botão **Novo** pode ser salvo fora da pasta conectada. Nesse caso, ele abre normalmente, mas pode não aparecer na árvore e a exclusão pela interface pode não estar disponível até que o script consiga associá-lo a um diretório.
 - Não há controle de conflitos entre duas abas, duas janelas ou outro programa editando o mesmo arquivo.
 - O refresh de cinco segundos não é um monitor de alterações nativo do sistema de arquivos; ele apenas relê a listagem da pasta.
@@ -273,7 +278,7 @@ Verifique se:
 
 #### O desenho abriu, mas não foi salvo
 
-Verifique se há um arquivo ativo e se o navegador ainda tem permissão de escrita. Tente `Ctrl+S`/`Cmd+S` e observe o rodapé. Lembre-se de que o código depende das chaves de `localStorage` utilizadas pela versão atual do Excalidraw.
+Verifique se há um arquivo ativo e se o navegador ainda tem permissão de escrita. Tente `Ctrl+S`/`Cmd+S` e observe o rodapé. Para uma imagem que ainda está carregando, espere ela aparecer completamente e salve novamente; se um binário não puder ser recuperado, o script informa os `fileId`s ausentes e mantém o arquivo existente intacto.
 
 #### A colaboração ou o modo offline deixou de funcionar
 
@@ -305,7 +310,7 @@ Ao publicar alterações, descreva no histórico qualquer mudança que afete per
 - [x] Salvamento automático
 - [x] Interface multilíngue
 - [x] Tema claro e escuro
-- [ ] Preservar imagens e recursos incorporados
+- [x] Preservar imagens e recursos incorporados
 - [ ] Restaurar arquivos excluídos
 - [ ] Pesquisar projetos
 - [ ] Publicar uma extensão Chrome empacotada
@@ -453,16 +458,16 @@ Right-click a file or folder to open the contextual action menu. Choose **Rename
 
 Files can also be duplicated from the contextual menu. The copy uses the `yyyy-mm-dd Name - Cópia.exw` format; if the name already exists, a numeric suffix is added.
 
-Click **Novo** to open the native save dialog. The suggested name is `Novo_Projeto.exw`. Save it inside the connected project directory if you want it to appear in the tree.
+Click **Novo**. With a connected project folder, the add-on opens a dialog for the name and creates the file at the root using `yyyy-mm-dd Name.exw`; the `.exw` extension is added automatically. Without a connected folder, the native save dialog remains available as a fallback.
 
 The save behavior is:
 
-- **Automatic:** after Excalidraw writes the `localStorage` key `excalidraw`, the script waits 1.5 seconds and writes the current document to the active file;
+- **Automatic:** after Excalidraw writes the `localStorage` key `excalidraw`, the script waits 1.5 seconds and writes the current document to the active file. This also gives newly inserted images time to finish being persisted;
 - **Manual:** `Ctrl+S` on Windows/Linux or `Cmd+S` on macOS writes the file immediately.
 
 Click **Excluir** to confirm deletion of the active file, or use **Delete** from the contextual menu. The script first writes a copy named `<original>.exw.deleted`, then removes the original. There is no restore button, and a later deletion with the same name can overwrite the `.deleted` copy.
 
-Folders can only be deleted when they contain no files. In an empty area of the tree, right-click and choose **New Folder** to create a folder; existing names are rejected.
+Folders can only be deleted when they contain no files. Right-click a folder and choose **New** to create a file inside it. In an empty area of the tree, choose **New** to create the file at the selected project root or **New Folder** to create a folder; existing names are rejected.
 
 Click the pin icon to keep the sidebar expanded. The pinned state is stored in the `excaliSidebarPinned` cookie for up to one year. When active, the script adds `sidebar-active` to `body` and moves `.excalidraw-container` so the sidebar does not cover the application.
 
@@ -480,7 +485,9 @@ Click the pin icon to keep the sidebar expanded. The pinned state is stored in t
 }
 ```
 
-On save, the script reads `localStorage["excalidraw"]` and `localStorage["excalidraw-state"]`, then writes `elements` and `appState` to the local file. The current implementation always writes `files: {}`. Embedded images, attachments and other binary resources may therefore not survive an automatic or manual save. Keep backups and validate files that contain those resources.
+On save, the script obtains `elements` and `appState` from Excalidraw's imperative API when available, using `localStorage["excalidraw"]` and `localStorage["excalidraw-state"]` only as a fallback/serializable state source. Binary files come from the official `getFiles()` API and, when needed, Excalidraw's `files-db`/`files-store` IndexedDB. The saved `files` entries preserve `mimeType`, `id`, `dataURL`, `created`, and metadata such as `lastRetrieved` and `version` when present. Binary data is not stored in cookies or copied to `localStorage`.
+
+When opening an `.exw`, the existing synthetic drop event still loads the scene. The add-on also passes the parsed `files` entries to `addFiles()` when available, so files containing `files: {}` or no `files` field remain compatible while image file IDs in a complete file are restored.
 
 ### Automatic temporary file
 
@@ -494,9 +501,11 @@ The script also contains an `ESCUDO LOCAL` block that attempts to unregister Ser
 
 ### Known limitations
 
-- The script depends on Excalidraw internals such as `.excalidraw-container`, `localStorage["excalidraw"]` and `localStorage["excalidraw-state"]`.
+- The script depends on Excalidraw internals such as `.excalidraw-container`; the local-storage keys are used only as a fallback/serializable state source.
 - Only `.exw` files are shown in the tree.
-- `files` is written as an empty object, so embedded resources may be lost.
+- Images are embedded as `dataURL` values in the JSON; large images increase `.exw` size, serialization time, and memory use, and browsers/filesystems may impose practical limits.
+- If an image file ID is still referenced but neither the API nor official IndexedDB can return its binary, the add-on does not overwrite the existing file and reports the missing IDs. This prevents replacing a valid copy with a scene that has lost an image.
+- The `files-db`/`files-store` names are Excalidraw internals and may change in a future release. The public `getFiles()` API is attempted first, but the fallback may then need updating.
 - A file created outside the connected directory can open successfully but may not appear in the tree or be deletable from the sidebar.
 - There is no conflict handling for multiple tabs, windows or external editors.
 - The five-second refresh rereads the directory listing; it is not a native file-system watcher.
@@ -512,7 +521,7 @@ If the directory picker does not open, click the button directly; picker APIs re
 
 If a file is missing, confirm that it is inside the selected directory or a child directory, that its name ends in `.exw`, and that it is not actually named something like `file.exw.json` because of operating-system filename settings.
 
-If saving fails, confirm that an active file exists and that write permission is still granted. Try `Ctrl+S`/`Cmd+S` and check the status message in the sidebar. Remember that the save path depends on the local-storage keys used by the current Excalidraw version.
+If saving fails, confirm that an active file exists and that write permission is still granted. Try `Ctrl+S`/`Cmd+S` and check the status message in the sidebar. For an image that is still loading, wait until it appears completely and save again; if a binary cannot be recovered, the add-on reports the missing `fileId`s and leaves the existing file untouched.
 
 If collaboration or offline mode stops working, review the `ESCUDO LOCAL` block described above.
 

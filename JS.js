@@ -21,7 +21,7 @@
 
     const translations = {
         'pt-BR': {
-            appName: 'Excalidraw Local Addon',
+            appName: 'Excalidraw Explorer',
             pinSidebar: 'Fixar menu',
             unpinSidebar: 'Desafixar menu',
             language: 'Idioma',
@@ -29,12 +29,18 @@
             changeFolder: 'Mudar Pasta',
             reconnectFolder: 'Conectar Pasta',
             newFile: 'Novo',
+            newFilePrompt: 'Digite o nome do novo arquivo:',
+            newFileAction: 'Criar arquivo',
+            createFileError: 'Não foi possível criar o arquivo.',
             deleteFile: 'Excluir',
             noFileOpen: 'Nenhum arquivo aberto',
             open: 'Aberto:',
             autoSaved: '🔄 Auto-Salvo',
             saved: '✅ Salvo',
             errorLoading: 'Erro ao carregar.',
+            saveError: 'Erro ao salvar.',
+            imagesStillLoading: 'Aguardando imagens serem carregadas...',
+            imagesMissing: 'Não foi possível recuperar todas as imagens. O arquivo não foi sobrescrito.',
             selectFile: 'Selecione um arquivo na lista.',
             confirmDelete: 'Tem certeza que deseja excluir "{name}"?',
             deleted: 'Excluído',
@@ -60,7 +66,7 @@
             suggestedFileName: 'Novo_Projeto.exw'
         },
         'en': {
-            appName: 'Excalidraw Local Addon',
+            appName: 'Excalidraw Explorer',
             pinSidebar: 'Pin menu',
             unpinSidebar: 'Unpin menu',
             language: 'Language',
@@ -68,12 +74,18 @@
             changeFolder: 'Change Folder',
             reconnectFolder: 'Reconnect Folder',
             newFile: 'New',
+            newFilePrompt: 'Enter the new file name:',
+            newFileAction: 'Create file',
+            createFileError: 'Could not create the file.',
             deleteFile: 'Delete',
             noFileOpen: 'No file open',
             open: 'Open:',
             autoSaved: '🔄 Auto-saved',
             saved: '✅ Saved',
             errorLoading: 'Error loading file.',
+            saveError: 'Error saving file.',
+            imagesStillLoading: 'Waiting for images to finish loading...',
+            imagesMissing: 'Some images could not be recovered. The file was not overwritten.',
             selectFile: 'Select a file from the list.',
             confirmDelete: 'Are you sure you want to delete "{name}"?',
             deleted: 'Deleted',
@@ -99,7 +111,7 @@
             suggestedFileName: 'New_Project.exw'
         },
         'es': {
-            appName: 'Excalidraw Local Addon',
+            appName: 'Excalidraw Explorer',
             pinSidebar: 'Fijar menú',
             unpinSidebar: 'Desfijar menú',
             language: 'Idioma',
@@ -107,12 +119,18 @@
             changeFolder: 'Cambiar carpeta',
             reconnectFolder: 'Reconectar carpeta',
             newFile: 'Nuevo',
+            newFilePrompt: 'Escribe el nombre del nuevo archivo:',
+            newFileAction: 'Crear archivo',
+            createFileError: 'No se pudo crear el archivo.',
             deleteFile: 'Eliminar',
             noFileOpen: 'Ningún archivo abierto',
             open: 'Abierto:',
             autoSaved: '🔄 Guardado automático',
             saved: '✅ Guardado',
             errorLoading: 'Error al cargar el archivo.',
+            saveError: 'Error al guardar el archivo.',
+            imagesStillLoading: 'Esperando a que se carguen las imágenes...',
+            imagesMissing: 'No se pudieron recuperar todas las imágenes. El archivo no se sobrescribió.',
             selectFile: 'Selecciona un archivo de la lista.',
             confirmDelete: '¿Seguro que deseas eliminar "{name}"?',
             deleted: 'Eliminado',
@@ -138,7 +156,7 @@
             suggestedFileName: 'Nuevo_Proyecto.exw'
         },
         'fr': {
-            appName: 'Excalidraw Local Addon',
+            appName: 'Excalidraw Explorer',
             pinSidebar: 'Épingler le menu',
             unpinSidebar: 'Désépingler le menu',
             language: 'Langue',
@@ -146,12 +164,18 @@
             changeFolder: 'Changer de dossier',
             reconnectFolder: 'Reconnecter le dossier',
             newFile: 'Nouveau',
+            newFilePrompt: 'Saisissez le nom du nouveau fichier :',
+            newFileAction: 'Créer le fichier',
+            createFileError: 'Impossible de créer le fichier.',
             deleteFile: 'Supprimer',
             noFileOpen: 'Aucun fichier ouvert',
             open: 'Ouvert :',
             autoSaved: '🔄 Enregistré automatiquement',
             saved: '✅ Enregistré',
             errorLoading: 'Erreur lors du chargement du fichier.',
+            saveError: 'Erreur lors de l’enregistrement du fichier.',
+            imagesStillLoading: 'En attente du chargement des images...',
+            imagesMissing: 'Certaines images n’ont pas pu être récupérées. Le fichier n’a pas été écrasé.',
             selectFile: 'Sélectionnez un fichier dans la liste.',
             confirmDelete: 'Voulez-vous vraiment supprimer « {name} » ?',
             deleted: 'Supprimé',
@@ -177,7 +201,7 @@
             suggestedFileName: 'Nouveau_Projet.exw'
         },
         'it': {
-            appName: 'Excalidraw Local Addon',
+            appName: 'Excalidraw Explorer',
             pinSidebar: 'Fissa menu',
             unpinSidebar: 'Sblocca menu',
             language: 'Lingua',
@@ -185,12 +209,18 @@
             changeFolder: 'Cambia cartella',
             reconnectFolder: 'Riconnetti cartella',
             newFile: 'Nuovo',
+            newFilePrompt: 'Inserisci il nome del nuovo file:',
+            newFileAction: 'Crea file',
+            createFileError: 'Impossibile creare il file.',
             deleteFile: 'Elimina',
             noFileOpen: 'Nessun file aperto',
             open: 'Aperto:',
             autoSaved: '🔄 Salvato automaticamente',
             saved: '✅ Salvato',
             errorLoading: 'Errore durante il caricamento del file.',
+            saveError: 'Errore durante il salvataggio del file.',
+            imagesStillLoading: 'Attesa del caricamento delle immagini...',
+            imagesMissing: 'Non è stato possibile recuperare tutte le immagini. Il file non è stato sovrascritto.',
             selectFile: 'Seleziona un file dall’elenco.',
             confirmDelete: 'Vuoi davvero eliminare "{name}"?',
             deleted: 'Eliminato',
@@ -216,7 +246,7 @@
             suggestedFileName: 'Nuovo_Progetto.exw'
         },
         'de': {
-            appName: 'Excalidraw Local Addon',
+            appName: 'Excalidraw Explorer',
             pinSidebar: 'Menü anheften',
             unpinSidebar: 'Menü lösen',
             language: 'Sprache',
@@ -224,12 +254,18 @@
             changeFolder: 'Ordner ändern',
             reconnectFolder: 'Ordner erneut verbinden',
             newFile: 'Neu',
+            newFilePrompt: 'Geben Sie den Namen der neuen Datei ein:',
+            newFileAction: 'Datei erstellen',
+            createFileError: 'Datei konnte nicht erstellt werden.',
             deleteFile: 'Löschen',
             noFileOpen: 'Keine Datei geöffnet',
             open: 'Geöffnet:',
             autoSaved: '🔄 Automatisch gespeichert',
             saved: '✅ Gespeichert',
             errorLoading: 'Fehler beim Laden der Datei.',
+            saveError: 'Fehler beim Speichern der Datei.',
+            imagesStillLoading: 'Warten, bis die Bilder geladen sind...',
+            imagesMissing: 'Einige Bilder konnten nicht abgerufen werden. Die Datei wurde nicht überschrieben.',
             selectFile: 'Wählen Sie eine Datei aus der Liste aus.',
             confirmDelete: 'Möchten Sie „{name}“ wirklich löschen?',
             deleted: 'Gelöscht',
@@ -355,6 +391,212 @@
     let renameDialogTarget = null;
     let dialogMode = 'rename';
     let newFolderParentDirHandle = null;
+    let newFileParentDirHandle = null;
+    let excalidrawAPI = null;
+    let saveQueue = Promise.resolve();
+
+    // --- DADOS OFICIAIS DO EXCALIDRAW ---
+    // A aplicação pública não expõe a instância da API no window. Quando a
+    // injeção roda no mesmo contexto da página, ela pode ser encontrada na
+    // árvore React; o acesso continua limitado aos métodos públicos da API.
+    const isExcalidrawAPI = (value) => value &&
+        typeof value.getFiles === 'function' &&
+        typeof value.addFiles === 'function' &&
+        typeof value.getAppState === 'function' &&
+        typeof value.getSceneElementsIncludingDeleted === 'function';
+
+    const findExcalidrawAPI = () => {
+        if (isExcalidrawAPI(excalidrawAPI)) return excalidrawAPI;
+
+        const seen = new Set();
+        const inspect = (value, depth = 0) => {
+            if (!value || depth > 6 || (typeof value !== 'object' && typeof value !== 'function')) return null;
+            if (isExcalidrawAPI(value)) return value;
+            if (seen.has(value)) return null;
+            seen.add(value);
+
+            if (depth === 6) return null;
+            for (const key of Object.keys(value)) {
+                if (key === 'return' || key === 'child' || key === 'sibling' ||
+                    key === 'current' || key === 'next' ||
+                    key === 'memoizedProps' || key === 'pendingProps' ||
+                    key === 'memoizedState' || key === 'stateNode' ||
+                    /excalidraw|api|files|state/i.test(key)) {
+                    const found = inspect(value[key], depth + 1);
+                    if (found) return found;
+                }
+            }
+            return null;
+        };
+
+        const roots = [
+            document.getElementById('root'),
+            document.querySelector('.excalidraw-app'),
+            document.querySelector('.excalidraw-container')
+        ].filter(Boolean);
+        for (const root of roots) {
+            const reactKeys = Object.getOwnPropertyNames(root).filter((key) =>
+                key.startsWith('__reactFiber$') || key.startsWith('__reactContainer$')
+            );
+            for (const key of reactKeys) {
+                const found = inspect(root[key]);
+                if (found) {
+                    excalidrawAPI = found;
+                    return found;
+                }
+            }
+        }
+        return null;
+    };
+
+    const waitForExcalidrawAPI = async (attempts = 8, delay = 125) => {
+        for (let attempt = 0; attempt < attempts; attempt++) {
+            const api = findExcalidrawAPI();
+            if (api) return api;
+            await new Promise((resolve) => setTimeout(resolve, delay));
+        }
+        return null;
+    };
+
+    const getReferencedFileIds = (elements) => [...new Set((elements || [])
+        .filter((element) => !element.isDeleted && element.fileId)
+        .map((element) => element.fileId))];
+
+    const isUsableBinaryFile = (file, fileId) => Boolean(file &&
+        typeof file === 'object' &&
+        typeof (file.id || fileId) === 'string' &&
+        typeof file.dataURL === 'string' &&
+        file.dataURL.startsWith('data:') &&
+        typeof file.mimeType === 'string' &&
+        typeof file.created === 'number');
+
+    const normalizeBinaryFile = (file, fileId) => {
+        if (!file || typeof file !== 'object') return null;
+        const normalized = { ...file, id: file.id || fileId };
+        return isUsableBinaryFile(normalized, fileId) ? normalized : null;
+    };
+
+    // Excalidraw mantém os binários locais em files-db/files-store. Esta é
+    // apenas uma leitura de compatibilidade/fallback; não criamos um segundo
+    // armazenamento nem copiamos os dados para cookies ou localStorage.
+    const readOfficialBinaryFiles = async (fileIds) => {
+        if (!fileIds.length || !window.indexedDB) return {};
+        try {
+            if (typeof indexedDB.databases !== 'function') return {};
+            const databases = await indexedDB.databases();
+            if (!databases.some((database) => database.name === 'files-db')) return {};
+
+            return await new Promise((resolve) => {
+                const request = indexedDB.open('files-db');
+                let upgrade = false;
+                request.onupgradeneeded = () => {
+                    upgrade = true;
+                    try { request.transaction.abort(); } catch (e) {}
+                };
+                request.onerror = () => resolve({});
+                request.onsuccess = () => {
+                    const db = request.result;
+                    if (upgrade || !db.objectStoreNames.contains('files-store')) {
+                        db.close();
+                        resolve({});
+                        return;
+                    }
+                    let transaction;
+                    try {
+                        transaction = db.transaction('files-store', 'readonly');
+                        const store = transaction.objectStore('files-store');
+                        const result = {};
+                        let remaining = fileIds.length;
+                        if (!remaining) {
+                            db.close();
+                            resolve(result);
+                            return;
+                        }
+                        fileIds.forEach((fileId) => {
+                            const getRequest = store.get(fileId);
+                            getRequest.onsuccess = () => {
+                                const file = normalizeBinaryFile(getRequest.result, fileId);
+                                if (file) result[fileId] = file;
+                                remaining -= 1;
+                                if (!remaining) {
+                                    db.close();
+                                    resolve(result);
+                                }
+                            };
+                            getRequest.onerror = () => {
+                                remaining -= 1;
+                                if (!remaining) {
+                                    db.close();
+                                    resolve(result);
+                                }
+                            };
+                        });
+                    } catch (e) {
+                        try { db.close(); } catch (closeError) {}
+                        resolve({});
+                    }
+                };
+            });
+        } catch (e) {
+            console.warn('Não foi possível ler os arquivos binários do Excalidraw:', e);
+            return {};
+        }
+    };
+
+    const collectBinaryFiles = async (elements) => {
+        const fileIds = getReferencedFileIds(elements);
+        if (!fileIds.length) return { files: {}, missing: [] };
+
+        const files = {};
+        for (let attempt = 0; attempt < 8; attempt++) {
+            const api = findExcalidrawAPI();
+            if (api) {
+                try {
+                    const currentFiles = api.getFiles() || {};
+                    for (const fileId of fileIds) {
+                        const file = normalizeBinaryFile(currentFiles[fileId], fileId);
+                        if (file) files[fileId] = file;
+                    }
+                } catch (e) {
+                    console.warn('Não foi possível ler getFiles() do Excalidraw:', e);
+                }
+            }
+
+            const storedFiles = await readOfficialBinaryFiles(fileIds.filter((fileId) => !files[fileId]));
+            Object.assign(files, storedFiles);
+            const missing = fileIds.filter((fileId) => !files[fileId]);
+            if (!missing.length) return { files, missing };
+            if (attempt < 7) await new Promise((resolve) => setTimeout(resolve, 250));
+        }
+
+        return { files, missing: fileIds.filter((fileId) => !files[fileId]) };
+    };
+
+    const readCurrentScene = () => {
+        const api = findExcalidrawAPI();
+        if (api) {
+            try {
+                const elements = api.getSceneElementsIncludingDeleted();
+                const state = api.getAppState();
+                // O estado já limpo pelo Excalidraw continua sendo a melhor
+                // representação serializável; ele não contém os binários.
+                const storedState = localStorage.getItem('excalidraw-state');
+                return {
+                    elements,
+                    appState: storedState ? JSON.parse(storedState) : JSON.parse(JSON.stringify(state || {}))
+                };
+            } catch (e) {
+                console.warn('Não foi possível ler a API do Excalidraw:', e);
+            }
+        }
+
+        const elements = localStorage.getItem('excalidraw');
+        if (!elements) return null;
+        return {
+            elements: JSON.parse(elements),
+            appState: JSON.parse(localStorage.getItem('excalidraw-state') || '{}')
+        };
+    };
 
     // 1. Interface
     const sidebar = document.createElement('div');
@@ -378,7 +620,7 @@
                         ${Object.entries(languages).map(([code, name]) => `<option value="${code}">${name}</option>`).join('')}
                     </select>
                 </div>
-                <small id="sidebar-brand"></small>
+                <small id="sidebar-brand"><a id="sidebar-brand-link" href="https://github.com/leonardomack/excalidraw-explorer" target="_blank" rel="noopener noreferrer"></a></small>
             </div>
         </div>
     `;
@@ -392,6 +634,7 @@
     contextMenu.hidden = true;
     contextMenu.setAttribute('role', 'menu');
     contextMenu.innerHTML = `
+        <button type="button" role="menuitem" data-action="new-file"></button>
         <button type="button" role="menuitem" data-action="rename"></button>
         <button type="button" role="menuitem" data-action="duplicate"></button>
         <button type="button" role="menuitem" data-action="delete"></button>
@@ -448,6 +691,7 @@
     const renameDialogInput = renameDialog.querySelector('.rename-dialog-input');
     const renameDialogCancel = renameDialog.querySelector('.rename-dialog-cancel');
     const renameDialogConfirm = renameDialog.querySelector('.rename-dialog-confirm');
+    const contextNewFileButton = contextMenu.querySelector('[data-action="new-file"]');
 
     const updateFolderButton = () => {
         if (btnSelect.dataset.action === 'reactivate') {
@@ -485,7 +729,7 @@
         sidebar.lang = currentLanguage;
         contextMenu.lang = currentLanguage;
         renameDialog.lang = currentLanguage;
-        document.getElementById('sidebar-brand').innerText = translate('appName');
+        document.getElementById('sidebar-brand-link').innerText = translate('appName');
         btnNewFile.title = translate('newFile');
         btnNewFile.dataset.tooltip = translate('newFile');
         btnNewFile.setAttribute('aria-label', btnNewFile.title);
@@ -501,13 +745,20 @@
         pinBtn.setAttribute('aria-label', pinBtn.title);
         updateFolderButton();
         contextRenameButton.innerText = translate('rename');
-        renameDialogTitle.innerText = dialogMode === 'new-folder' ? translate('newFolder') : translate('rename');
-        renameDialogPrompt.innerText = dialogMode === 'new-folder' ? translate('newFolderPrompt') : translate('renamePrompt');
+        renameDialogTitle.innerText = dialogMode === 'new-folder'
+            ? translate('newFolder')
+            : dialogMode === 'new-file' ? translate('newFile') : translate('rename');
+        renameDialogPrompt.innerText = dialogMode === 'new-folder'
+            ? translate('newFolderPrompt')
+            : dialogMode === 'new-file' ? translate('newFilePrompt') : translate('renamePrompt');
         renameDialogCancel.innerText = translate('cancel');
-        renameDialogConfirm.innerText = dialogMode === 'new-folder' ? translate('newFolderAction') : translate('renameAction');
+        renameDialogConfirm.innerText = dialogMode === 'new-folder'
+            ? translate('newFolderAction')
+            : dialogMode === 'new-file' ? translate('newFileAction') : translate('renameAction');
         contextDuplicateButton.innerText = translate('duplicate');
         contextDeleteButton.innerText = translate('deleteFile');
         contextNewFolderButton.innerText = translate('newFolder');
+        contextNewFileButton.innerText = translate('newFile');
 
         if (activeFileHandle) {
             updateFileStatus('open', activeFileHandle.name.replace('.exw', ''));
@@ -578,6 +829,7 @@
     const showContextMenu = (target, clientX, clientY) => {
         contextMenuTarget = target;
         const isEntry = target.kind === 'file' || target.kind === 'directory';
+        contextNewFileButton.hidden = !['blank', 'directory'].includes(target.kind);
         contextDuplicateButton.hidden = target.kind !== 'file';
         contextRenameButton.hidden = !isEntry;
         contextDeleteButton.hidden = !isEntry;
@@ -589,13 +841,14 @@
         const menuHeight = contextMenu.offsetHeight || 100;
         contextMenu.style.left = `${Math.max(margin, Math.min(clientX, window.innerWidth - menuWidth - margin))}px`;
         contextMenu.style.top = `${Math.max(margin, Math.min(clientY, window.innerHeight - menuHeight - margin))}px`;
-        contextRenameButton.focus();
+        (contextNewFileButton.hidden ? contextRenameButton : contextNewFileButton).focus();
     };
 
     const closeRenameDialog = () => {
         renameDialog.hidden = true;
         renameDialogTarget = null;
         newFolderParentDirHandle = null;
+        newFileParentDirHandle = null;
         dialogMode = 'rename';
         renameDialogInput.value = '';
     };
@@ -876,6 +1129,44 @@
         return `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
     };
 
+    const normalizeNewFileBaseName = (value) => {
+        let name = value.trim();
+        if (/\.exw$/i.test(name)) name = name.slice(0, -4).trim();
+        if (!name || name === '.' || name === '..' || /[\\/\0]/.test(name)) return null;
+        return name;
+    };
+
+    const createNewFile = async (parentDirHandle, requestedName) => {
+        if (!parentDirHandle) return false;
+        const baseName = normalizeNewFileBaseName(requestedName);
+        if (!baseName) {
+            alert(translate('invalidName'));
+            return false;
+        }
+
+        const fileName = `${getTodayPrefix()} ${baseName}.exw`;
+        if (await entryExists(parentDirHandle, fileName)) {
+            alert(translate('nameExists'));
+            return false;
+        }
+
+        const fileHandle = await parentDirHandle.getFileHandle(fileName, { create: true });
+        try {
+            const writable = await fileHandle.createWritable();
+            await writable.write(JSON.stringify({
+                type: 'excalidraw', version: 2, elements: [], appState: {}, files: {}
+            }));
+            await writable.close();
+        } catch (error) {
+            try { await parentDirHandle.removeEntry(fileName); } catch (cleanupError) {}
+            throw error;
+        }
+
+        await openExcalidrawFile(fileHandle, parentDirHandle, null);
+        if (currentDirHandle) await renderTree(currentDirHandle, document.getElementById('file-tree'), '');
+        return true;
+    };
+
     const duplicateFile = async (target) => {
         if (!target || target.kind !== 'file') return;
         if (activeFileHandle && await target.handle.isSameEntry(activeFileHandle)) {
@@ -921,7 +1212,24 @@
         renameDialogInput.focus();
     };
 
+    const openNewFileDialog = (parentDirHandle) => {
+        if (!parentDirHandle) return;
+        closeContextMenu();
+        dialogMode = 'new-file';
+        renameDialogTarget = null;
+        newFileParentDirHandle = parentDirHandle;
+        applyLanguage();
+        renameDialog.hidden = false;
+        renameDialogInput.value = '';
+        renameDialogInput.focus();
+    };
+
     contextMenu.addEventListener('click', (event) => event.stopPropagation());
+    contextNewFileButton.addEventListener('click', () => {
+        const target = contextMenuTarget;
+        if (target?.kind === 'directory') openNewFileDialog(target.handle);
+        else if (target?.kind === 'blank') openNewFileDialog(target.parentDirHandle);
+    });
     contextRenameButton.addEventListener('click', () => {
         if (contextMenuTarget) openRenameDialog(contextMenuTarget);
     });
@@ -947,19 +1255,21 @@
     });
     contextNewFolderButton.addEventListener('click', () => {
         if (contextMenuTarget?.kind === 'blank') {
-            openNewFolderDialog(contextMenuTarget.parentDirHandle);
+            openNewFolderDialog(contextMenuTarget.blankParentDirHandle || contextMenuTarget.parentDirHandle);
         }
     });
     fileTree.addEventListener('contextmenu', (event) => {
         if (event.target.closest('#file-tree li')) return;
         const list = event.target.closest('#file-tree ul');
-        const parentDirHandle = list?.directoryHandle || fileTree.directoryHandle || currentDirHandle;
+        const blankParentDirHandle = list?.directoryHandle || fileTree.directoryHandle || currentDirHandle;
+        const parentDirHandle = currentDirHandle || blankParentDirHandle;
         if (!parentDirHandle) return;
         event.preventDefault();
         event.stopPropagation();
         showContextMenu({
             kind: 'blank',
             parentDirHandle,
+            blankParentDirHandle,
             parentPath: list?.dataset.treePath || ''
         }, event.clientX, event.clientY);
     });
@@ -969,17 +1279,22 @@
     });
     renameDialogForm.addEventListener('submit', async (event) => {
         event.preventDefault();
-        if (dialogMode === 'new-folder') {
-            const parentDirHandle = newFolderParentDirHandle;
+        if (dialogMode === 'new-folder' || dialogMode === 'new-file') {
+            const parentDirHandle = dialogMode === 'new-folder'
+                ? newFolderParentDirHandle
+                : newFileParentDirHandle;
             renameDialogConfirm.disabled = true;
             renameDialogCancel.disabled = true;
             try {
-                if (parentDirHandle && await createFolder(parentDirHandle, renameDialogInput.value)) {
+                const created = dialogMode === 'new-folder'
+                    ? await createFolder(parentDirHandle, renameDialogInput.value)
+                    : await createNewFile(parentDirHandle, renameDialogInput.value);
+                if (parentDirHandle && created) {
                     closeRenameDialog();
                 }
             } catch (error) {
-                console.error('Erro ao criar pasta:', error);
-                alert(translate('createFolderError'));
+                console.error(dialogMode === 'new-folder' ? 'Erro ao criar pasta:' : 'Erro ao criar arquivo:', error);
+                alert(translate(dialogMode === 'new-folder' ? 'createFolderError' : 'createFileError'));
             } finally {
                 renameDialogConfirm.disabled = false;
                 renameDialogCancel.disabled = false;
@@ -1098,6 +1413,20 @@
 
         try {
             const file = await fileHandle.getFile();
+            let importedFiles = [];
+            try {
+                const contents = await file.text();
+                const parsed = JSON.parse(contents);
+                if (parsed && parsed.files && typeof parsed.files === 'object') {
+                    importedFiles = Object.entries(parsed.files)
+                        .map(([fileId, binaryFile]) => normalizeBinaryFile(binaryFile, fileId))
+                        .filter(Boolean);
+                }
+            } catch (parseError) {
+                // O Excalidraw continua sendo a autoridade para validar o
+                // arquivo através do evento drop abaixo.
+            }
+
             activeFileHandle = fileHandle;
             activeParentDirHandle = parentDirHandle;
 
@@ -1110,21 +1439,42 @@
             dataTransfer.items.add(file);
             const target = document.querySelector('.excalidraw-container') || document.body;
             target.dispatchEvent(new DragEvent('drop', { dataTransfer, bubbles: true, cancelable: true }));
+
+            // A carga oficial de JSON já lê data.files. Esta chamada adicional
+            // cobre versões que carregam a cena primeiro e os binários depois.
+            if (importedFiles.length) {
+                const api = await waitForExcalidrawAPI();
+                if (api) {
+                    try { api.addFiles(importedFiles); } catch (e) {
+                        console.warn('Não foi possível restaurar os arquivos binários:', e);
+                    }
+                }
+            }
             
             await ensureTemporaryFileExists();
         } catch (e) { alert(translate('errorLoading')); }
     }
 
-    async function saveCurrentFile(isAutoSave = false) {
-        if (!activeFileHandle) return;
+    async function saveCurrentFileNow(isAutoSave = false) {
+        if (!activeFileHandle) return false;
         try {
-            const el = localStorage.getItem('excalidraw');
-            const st = localStorage.getItem('excalidraw-state');
-            if (!el) return;
+            const scene = readCurrentScene();
+            if (!scene) return false;
+
+            updateFileStatus('imagesStillLoading');
+            const binaryResult = await collectBinaryFiles(scene.elements);
+            if (binaryResult.missing.length) {
+                const missingIds = binaryResult.missing.join(', ');
+                const message = `${translate('imagesMissing')} (${missingIds})`;
+                console.warn(message);
+                updateFileStatus('imagesMissing');
+                if (!isAutoSave) alert(message);
+                return false;
+            }
 
             const data = JSON.stringify({
                 type: "excalidraw", version: 2, source: window.location.href,
-                elements: JSON.parse(el), appState: JSON.parse(st || "{}"), files: {}
+                elements: scene.elements, appState: scene.appState, files: binaryResult.files
             }, null, 2);
 
             const w = await activeFileHandle.createWritable();
@@ -1132,13 +1482,24 @@
 
             const displayName = activeFileHandle.name.replace('.exw', '');
             updateFileStatus(isAutoSave ? 'autoSaved' : 'saved', displayName);
-            setTimeout(() => { 
+            setTimeout(() => {
                 if (activeFileHandle) {
                     const currName = activeFileHandle.name.replace('.exw', '');
                     updateFileStatus('open', currName);
                 }
             }, 1500);
-        } catch (e) {}
+            return true;
+        } catch (e) {
+            console.error('Erro ao salvar arquivo Excalidraw:', e);
+            if (!isAutoSave) alert(translate('saveError'));
+            return false;
+        }
+    }
+
+    async function saveCurrentFile(isAutoSave = false) {
+        const saveOperation = saveQueue.then(() => saveCurrentFileNow(isAutoSave));
+        saveQueue = saveOperation.catch(() => false);
+        return saveOperation;
     }
 
     // 4. Renderizador de Árvore Inteligente
@@ -1240,9 +1601,13 @@
 
     // 5. Botões Novo e Excluir
     btnNewFile.addEventListener('click', async () => {
+        if (currentDirHandle) {
+            openNewFileDialog(currentDirHandle);
+            return;
+        }
         try {
             const h = await window.showSaveFilePicker({
-                suggestedName: translate('suggestedFileName'),
+                suggestedName: `${getTodayPrefix()} Novo.exw`,
                 types: [{ description: translate('saveFileDescription'), accept: { 'application/json': ['.exw'] } }]
             });
             const b = JSON.stringify({ type: "excalidraw", version: 2, elements: [], appState: {}, files: {} });
