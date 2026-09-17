@@ -1129,22 +1129,21 @@
         return `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
     };
 
-    const normalizeNewFileBaseName = (value) => {
+    const normalizeNewFileName = (value) => {
         let name = value.trim();
         if (/\.exw$/i.test(name)) name = name.slice(0, -4).trim();
         if (!name || name === '.' || name === '..' || /[\\/\0]/.test(name)) return null;
-        return name;
+        return `${name}.exw`;
     };
 
     const createNewFile = async (parentDirHandle, requestedName) => {
         if (!parentDirHandle) return false;
-        const baseName = normalizeNewFileBaseName(requestedName);
-        if (!baseName) {
+        const fileName = normalizeNewFileName(requestedName);
+        if (!fileName) {
             alert(translate('invalidName'));
             return false;
         }
 
-        const fileName = `${getTodayPrefix()} ${baseName}.exw`;
         if (await entryExists(parentDirHandle, fileName)) {
             alert(translate('nameExists'));
             return false;
@@ -1220,8 +1219,9 @@
         newFileParentDirHandle = parentDirHandle;
         applyLanguage();
         renameDialog.hidden = false;
-        renameDialogInput.value = '';
+        renameDialogInput.value = `${getTodayPrefix()} `;
         renameDialogInput.focus();
+        renameDialogInput.setSelectionRange(renameDialogInput.value.length, renameDialogInput.value.length);
     };
 
     contextMenu.addEventListener('click', (event) => event.stopPropagation());
