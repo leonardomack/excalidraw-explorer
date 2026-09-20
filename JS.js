@@ -1,4 +1,7 @@
+// Versão: v0.1.1
 (async function() {
+    const APP_VERSION = 'v0.1.1';
+
     if (document.getElementById('custom-excalidraw-sidebar')) return;
 
     // --- COOKIES ---
@@ -620,7 +623,7 @@
                         ${Object.entries(languages).map(([code, name]) => `<option value="${code}">${name}</option>`).join('')}
                     </select>
                 </div>
-                <small id="sidebar-brand"><a id="sidebar-brand-link" href="https://github.com/leonardomack/excalidraw-explorer" target="_blank" rel="noopener noreferrer"></a></small>
+                <small id="sidebar-brand"><a id="sidebar-brand-link" href="https://github.com/leonardomack/excalidraw-explorer" target="_blank" rel="noopener noreferrer"></a><span id="sidebar-version"></span></small>
             </div>
         </div>
     `;
@@ -681,6 +684,7 @@
     const languageToggle = document.getElementById('language-toggle');
     const languageControl = sidebar.querySelector('.language-control');
     const languageSelect = document.getElementById('language-select');
+    document.getElementById('sidebar-version').innerText = APP_VERSION;
     const contextRenameButton = contextMenu.querySelector('[data-action="rename"]');
     const contextDuplicateButton = contextMenu.querySelector('[data-action="duplicate"]');
     const contextDeleteButton = contextMenu.querySelector('[data-action="delete"]');
