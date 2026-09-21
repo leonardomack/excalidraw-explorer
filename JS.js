@@ -962,9 +962,9 @@
         }
 
         if (isActiveFile) {
-            const tempHandle = await ensureTemporaryFileExists();
-            if (tempHandle) {
-                await openExcalidrawFile(tempHandle, currentDirHandle, null);
+            const quickNotesHandle = await ensureQuickNotesFileExists();
+            if (quickNotesHandle) {
+                await openExcalidrawFile(quickNotesHandle, currentDirHandle, null);
             } else {
                 updateFileStatus('deleted');
             }
@@ -1338,21 +1338,21 @@
         }
     }, 5000);
 
-    // --- GARANTE ARQUIVO TEMPORÁRIO NA RAIZ ---
-    async function ensureTemporaryFileExists() {
+    // --- GARANTE ARQUIVO DE NOTAS RÁPIDAS NA RAIZ ---
+    async function ensureQuickNotesFileExists() {
         if (!currentDirHandle) return null;
         try {
-            return await currentDirHandle.getFileHandle('Temporario.exw', { create: false });
+            return await currentDirHandle.getFileHandle('Notas rápidas.exw', { create: false });
         } catch (e) {
             try {
-                const tempHandle = await currentDirHandle.getFileHandle('Temporario.exw', { create: true });
+                const quickNotesHandle = await currentDirHandle.getFileHandle('Notas rápidas.exw', { create: true });
                 const blank = JSON.stringify({ type: "excalidraw", version: 2, elements: [], appState: {}, files: {} });
-                const w = await tempHandle.createWritable();
+                const w = await quickNotesHandle.createWritable();
                 await w.write(blank);
                 await w.close();
-                return tempHandle;
+                return quickNotesHandle;
             } catch (createErr) {
-                console.error("Erro ao criar o arquivo Temporario automático:", createErr);
+                console.error("Erro ao criar o arquivo Notas rápidas automático:", createErr);
                 return null;
             }
         }
@@ -1367,8 +1367,8 @@
                 if (perm === 'granted') {
                     currentDirHandle = savedHandle;
                     updateFolderButton();
-                    const tempHandle = await ensureTemporaryFileExists(); 
-                    if (tempHandle) await openExcalidrawFile(tempHandle, currentDirHandle, null);
+                    const quickNotesHandle = await ensureQuickNotesFileExists();
+                    if (quickNotesHandle) await openExcalidrawFile(quickNotesHandle, currentDirHandle, null);
                     await renderTree(currentDirHandle, document.getElementById('file-tree'), "");
                 } else {
                     btnSelect.dataset.action = "reactivate";
@@ -1390,8 +1390,8 @@
                         currentDirHandle = savedHandle;
                         delete btnSelect.dataset.action;
                         updateFolderButton();
-                        const tempHandle = await ensureTemporaryFileExists(); 
-                        if (tempHandle) await openExcalidrawFile(tempHandle, currentDirHandle, null);
+                        const quickNotesHandle = await ensureQuickNotesFileExists();
+                        if (quickNotesHandle) await openExcalidrawFile(quickNotesHandle, currentDirHandle, null);
                         await renderTree(currentDirHandle, document.getElementById('file-tree'), "");
                     }
                 }
@@ -1404,9 +1404,9 @@
             delete btnSelect.dataset.action;
             updateFolderButton();
             
-            const tempHandle = await ensureTemporaryFileExists(); 
-            if (tempHandle) {
-                await openExcalidrawFile(tempHandle, currentDirHandle, null);
+            const quickNotesHandle = await ensureQuickNotesFileExists();
+            if (quickNotesHandle) {
+                await openExcalidrawFile(quickNotesHandle, currentDirHandle, null);
             }
             await renderTree(currentDirHandle, document.getElementById('file-tree'), "");
         } catch (e) {}
@@ -1455,7 +1455,7 @@
                 }
             }
             
-            await ensureTemporaryFileExists();
+            await ensureQuickNotesFileExists();
         } catch (e) { alert(translate('errorLoading')); }
     }
 

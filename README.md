@@ -217,9 +217,9 @@ Em seguida, escreve um novo JSON no arquivo local. Para cada `fileId` referencia
 
 Ao abrir um `.exw`, o evento de arrastar/soltar continua sendo usado para carregar a cena. O script também entrega os registros de `files` à API `addFiles()` quando disponível; assim, arquivos que já contenham `files: {}` ou que não tenham `files` continuam compatíveis, e arquivos com imagens restauram os dados associados aos seus `fileId`s.
 
-### Arquivo temporário automático
+### Arquivo automático de notas rápidas
 
-Ao conectar uma pasta, o script garante que exista um arquivo chamado `Temporario.exw` na raiz da pasta escolhida. Quando a página é carregada ou a pasta é reconectada, esse arquivo é aberto como área de trabalho inicial.
+Ao conectar uma pasta, o script garante que exista um arquivo chamado `Notas rápidas.exw` na raiz da pasta escolhida. Quando a página é carregada ou a pasta é reconectada, esse arquivo é aberto como área de trabalho inicial.
 
 Esse arquivo é intencionalmente visível no diretório. Se for excluído pela interface, o script poderá recriá-lo para manter uma área de trabalho disponível.
 
@@ -491,9 +491,9 @@ On save, the script obtains `elements` and `appState` from Excalidraw's imperati
 
 When opening an `.exw`, the existing synthetic drop event still loads the scene. The add-on also passes the parsed `files` entries to `addFiles()` when available, so files containing `files: {}` or no `files` field remain compatible while image file IDs in a complete file are restored.
 
-### Automatic temporary file
+### Automatic quick notes file
 
-When a directory is connected, the script ensures that `Temporario.exw` exists in the selected directory's root. It opens this file as the initial workspace after loading or reconnecting. The file is intentionally visible and may be recreated if it is deleted through the sidebar.
+When a directory is connected, the script ensures that `Notas rápidas.exw` exists in the selected directory's root. It opens this file as the initial workspace after loading or reconnecting. The file is intentionally visible and may be recreated if it is deleted through the sidebar.
 
 ### Privacy, security and network behavior
 
