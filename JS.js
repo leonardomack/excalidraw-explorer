@@ -1,6 +1,6 @@
-// Versão: v0.1.1
+// Versão: v0.1.2
 (async function() {
-    const APP_VERSION = 'v0.1.1';
+    const APP_VERSION = 'v0.1.2';
 
     if (document.getElementById('custom-excalidraw-sidebar')) return;
 
@@ -29,7 +29,7 @@
             unpinSidebar: 'Desafixar menu',
             language: 'Idioma',
             selectFolder: 'Abrir Projetos',
-            changeFolder: 'Mudar Pasta',
+            changeFolder: 'Escolher pasta raíz',
             reconnectFolder: 'Conectar Pasta',
             newFile: 'Novo',
             newFilePrompt: 'Digite o nome do novo arquivo:',
@@ -74,7 +74,7 @@
             unpinSidebar: 'Unpin menu',
             language: 'Language',
             selectFolder: 'Open Projects',
-            changeFolder: 'Change Folder',
+            changeFolder: 'Choose root folder',
             reconnectFolder: 'Reconnect Folder',
             newFile: 'New',
             newFilePrompt: 'Enter the new file name:',
@@ -119,7 +119,7 @@
             unpinSidebar: 'Desfijar menú',
             language: 'Idioma',
             selectFolder: 'Abrir proyectos',
-            changeFolder: 'Cambiar carpeta',
+            changeFolder: 'Elegir carpeta raíz',
             reconnectFolder: 'Reconectar carpeta',
             newFile: 'Nuevo',
             newFilePrompt: 'Escribe el nombre del nuevo archivo:',
@@ -164,7 +164,7 @@
             unpinSidebar: 'Désépingler le menu',
             language: 'Langue',
             selectFolder: 'Ouvrir les projets',
-            changeFolder: 'Changer de dossier',
+            changeFolder: 'Choisir le dossier racine',
             reconnectFolder: 'Reconnecter le dossier',
             newFile: 'Nouveau',
             newFilePrompt: 'Saisissez le nom du nouveau fichier :',
@@ -209,7 +209,7 @@
             unpinSidebar: 'Sblocca menu',
             language: 'Lingua',
             selectFolder: 'Apri progetti',
-            changeFolder: 'Cambia cartella',
+            changeFolder: 'Scegli cartella radice',
             reconnectFolder: 'Riconnetti cartella',
             newFile: 'Nuovo',
             newFilePrompt: 'Inserisci il nome del nuovo file:',
@@ -254,7 +254,7 @@
             unpinSidebar: 'Menü lösen',
             language: 'Sprache',
             selectFolder: 'Projekte öffnen',
-            changeFolder: 'Ordner ändern',
+            changeFolder: 'Stammordner auswählen',
             reconnectFolder: 'Ordner erneut verbinden',
             newFile: 'Neu',
             newFilePrompt: 'Geben Sie den Namen der neuen Datei ein:',
@@ -357,8 +357,11 @@
         newFile: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8l4 4V20.5H6z"></path><path d="M14 3.5v5h4"></path><path d="M12 12v5M9.5 14.5h5"></path></svg>',
         deleteFile: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 4h4l1 3H9zM7 7l.8 13h8.4L17 7M10 10.5v6M14 10.5v6"></path></svg>',
         folder: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5A1.5 1.5 0 0 1 5 6h5l2 2h7.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-14A1.5 1.5 0 0 1 4 17.5z"></path></svg>',
+        newFolder: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5A1.5 1.5 0 0 1 5 6h5l2 2h7.5A1.5 1.5 0 0 1 21 9.5v8A1.5 1.5 0 0 1 19.5 19h-14A1.5 1.5 0 0 1 4 17.5z"></path><path d="M12 11.5v5M9.5 14h5"></path></svg>',
         folderOpen: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H10l2 2h7.5a1.5 1.5 0 0 1 1.4 2l-2.1 6.5a2 2 0 0 1-1.9 1.5H5.2a2 2 0 0 1-1.9-2.5z"></path></svg>',
         file: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8l4 4V20.5H6z"></path><path d="M14 3.5v5h4"></path></svg>',
+        rename: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5V20h3.5L18.8 8.7l-3.5-3.5z"></path><path d="m13.8 7.2 3.5 3.5"></path></svg>',
+        duplicate: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="11" height="13" rx="1.5"></rect><path d="M5 17V5.5A1.5 1.5 0 0 1 6.5 4H16"></path></svg>',
         pin: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8M9 4l1 6-3 3h10l-3-3 1-6M12 13v7"></path></svg>',
         globe: '<svg class="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.8 9h16.4M3.8 15h16.4M12 3.5c2.1 2.3 3.1 5.1 3.1 8.5S14.1 18.2 12 20.5C9.9 18.2 8.9 15.4 8.9 12S9.9 5.8 12 3.5z"></path></svg>'
     };
@@ -608,8 +611,6 @@
         <div class="sidebar-content">
             <div class="sidebar-header">
                 <div class="sidebar-actions">
-                    <button id="btn-new-file" class="sidebar-icon-btn" type="button">${icon('newFile')}</button>
-                    <button id="btn-delete-file" class="sidebar-icon-btn" type="button">${icon('deleteFile')}</button>
                     <button id="btn-select-folder" class="sidebar-icon-btn" type="button">${icon('folder')}</button>
                 </div>
                 <button id="pin-sidebar" class="pin-button" type="button">${icon('pin')}</button>
@@ -637,11 +638,11 @@
     contextMenu.hidden = true;
     contextMenu.setAttribute('role', 'menu');
     contextMenu.innerHTML = `
-        <button type="button" role="menuitem" data-action="new-file"></button>
-        <button type="button" role="menuitem" data-action="rename"></button>
-        <button type="button" role="menuitem" data-action="duplicate"></button>
-        <button type="button" role="menuitem" data-action="delete"></button>
-        <button type="button" role="menuitem" data-action="new-folder"></button>
+        <button type="button" role="menuitem" data-action="new-file">${icon('newFile')}<span class="context-menu-label"></span></button>
+        <button type="button" role="menuitem" data-action="rename">${icon('rename')}<span class="context-menu-label"></span></button>
+        <button type="button" role="menuitem" data-action="duplicate">${icon('duplicate')}<span class="context-menu-label"></span></button>
+        <button type="button" role="menuitem" data-action="delete">${icon('deleteFile')}<span class="context-menu-label"></span></button>
+        <button type="button" role="menuitem" data-action="new-folder">${icon('newFolder')}<span class="context-menu-label"></span></button>
     `;
     document.body.appendChild(contextMenu);
 
@@ -677,8 +678,6 @@
     applyTheme();
 
     const btnSelect = document.getElementById('btn-select-folder');
-    const btnNewFile = document.getElementById('btn-new-file');
-    const btnDeleteFile = document.getElementById('btn-delete-file');
     const fileTree = document.getElementById('file-tree');
     const pinBtn = document.getElementById('pin-sidebar');
     const languageToggle = document.getElementById('language-toggle');
@@ -689,6 +688,10 @@
     const contextDuplicateButton = contextMenu.querySelector('[data-action="duplicate"]');
     const contextDeleteButton = contextMenu.querySelector('[data-action="delete"]');
     const contextNewFolderButton = contextMenu.querySelector('[data-action="new-folder"]');
+    const contextRenameLabel = contextRenameButton.querySelector('.context-menu-label');
+    const contextDuplicateLabel = contextDuplicateButton.querySelector('.context-menu-label');
+    const contextDeleteLabel = contextDeleteButton.querySelector('.context-menu-label');
+    const contextNewFolderLabel = contextNewFolderButton.querySelector('.context-menu-label');
     const renameDialogForm = renameDialog.querySelector('form');
     const renameDialogTitle = renameDialog.querySelector('.rename-dialog-title');
     const renameDialogPrompt = renameDialog.querySelector('.rename-dialog-prompt');
@@ -696,6 +699,7 @@
     const renameDialogCancel = renameDialog.querySelector('.rename-dialog-cancel');
     const renameDialogConfirm = renameDialog.querySelector('.rename-dialog-confirm');
     const contextNewFileButton = contextMenu.querySelector('[data-action="new-file"]');
+    const contextNewFileLabel = contextNewFileButton.querySelector('.context-menu-label');
 
     const updateFolderButton = () => {
         if (btnSelect.dataset.action === 'reactivate') {
@@ -734,12 +738,6 @@
         contextMenu.lang = currentLanguage;
         renameDialog.lang = currentLanguage;
         document.getElementById('sidebar-brand-link').innerText = translate('appName');
-        btnNewFile.title = translate('newFile');
-        btnNewFile.dataset.tooltip = translate('newFile');
-        btnNewFile.setAttribute('aria-label', btnNewFile.title);
-        btnDeleteFile.title = translate('deleteFile');
-        btnDeleteFile.dataset.tooltip = translate('deleteFile');
-        btnDeleteFile.setAttribute('aria-label', btnDeleteFile.title);
         languageToggle.title = translate('language');
         languageToggle.setAttribute('aria-label', languageToggle.title);
         languageSelect.setAttribute('aria-label', translate('language'));
@@ -748,7 +746,7 @@
         pinBtn.dataset.tooltip = pinBtn.title;
         pinBtn.setAttribute('aria-label', pinBtn.title);
         updateFolderButton();
-        contextRenameButton.innerText = translate('rename');
+        contextRenameLabel.innerText = translate('rename');
         renameDialogTitle.innerText = dialogMode === 'new-folder'
             ? translate('newFolder')
             : dialogMode === 'new-file' ? translate('newFile') : translate('rename');
@@ -759,10 +757,10 @@
         renameDialogConfirm.innerText = dialogMode === 'new-folder'
             ? translate('newFolderAction')
             : dialogMode === 'new-file' ? translate('newFileAction') : translate('renameAction');
-        contextDuplicateButton.innerText = translate('duplicate');
-        contextDeleteButton.innerText = translate('deleteFile');
-        contextNewFolderButton.innerText = translate('newFolder');
-        contextNewFileButton.innerText = translate('newFile');
+        contextDuplicateLabel.innerText = translate('duplicate');
+        contextDeleteLabel.innerText = translate('deleteFile');
+        contextNewFolderLabel.innerText = translate('newFolder');
+        contextNewFileLabel.innerText = translate('newFile');
 
         if (activeFileHandle) {
             updateFileStatus('open', activeFileHandle.name.replace('.exw', ''));
@@ -837,7 +835,7 @@
         contextDuplicateButton.hidden = target.kind !== 'file';
         contextRenameButton.hidden = !isEntry;
         contextDeleteButton.hidden = !isEntry;
-        contextNewFolderButton.hidden = target.kind !== 'blank';
+        contextNewFolderButton.hidden = !['blank', 'directory'].includes(target.kind);
         contextMenu.hidden = false;
 
         const margin = 6;
@@ -1258,7 +1256,9 @@
         }
     });
     contextNewFolderButton.addEventListener('click', () => {
-        if (contextMenuTarget?.kind === 'blank') {
+        if (contextMenuTarget?.kind === 'directory') {
+            openNewFolderDialog(contextMenuTarget.handle);
+        } else if (contextMenuTarget?.kind === 'blank') {
             openNewFolderDialog(contextMenuTarget.blankParentDirHandle || contextMenuTarget.parentDirHandle);
         }
     });
@@ -1538,7 +1538,10 @@
                 const folderLabel = document.createElement('span');
                 folderLabel.className = 'tree-label';
                 folderLabel.textContent = entry.name;
-                li.append(folderIcon, document.createTextNode(' '), folderLabel);
+                const treeEntry = document.createElement('div');
+                treeEntry.className = 'tree-entry';
+                treeEntry.append(folderIcon, document.createTextNode(' '), folderLabel);
+                li.appendChild(treeEntry);
                 
                 const childUl = document.createElement('ul');
                 childUl.style.display = isExpanded ? 'block' : 'none';
@@ -1570,7 +1573,10 @@
                 const fileLabel = document.createElement('span');
                 fileLabel.className = 'tree-label';
                 fileLabel.textContent = displayName;
-                li.append(fileIcon, document.createTextNode(' '), fileLabel);
+                const treeEntry = document.createElement('div');
+                treeEntry.className = 'tree-entry';
+                treeEntry.append(fileIcon, document.createTextNode(' '), fileLabel);
+                li.appendChild(treeEntry);
                 
                 if (activeFileHandle && entry.name === activeFileHandle.name) {
                     try {
@@ -1603,41 +1609,7 @@
         container.appendChild(ul);
     }
 
-    // 5. Botões Novo e Excluir
-    btnNewFile.addEventListener('click', async () => {
-        if (currentDirHandle) {
-            openNewFileDialog(currentDirHandle);
-            return;
-        }
-        try {
-            const h = await window.showSaveFilePicker({
-                suggestedName: `${getTodayPrefix()} Novo.exw`,
-                types: [{ description: translate('saveFileDescription'), accept: { 'application/json': ['.exw'] } }]
-            });
-            const b = JSON.stringify({ type: "excalidraw", version: 2, elements: [], appState: {}, files: {} });
-            const w = await h.createWritable(); await w.write(b); await w.close();
-            await openExcalidrawFile(h, null, null);
-            if (currentDirHandle) await renderTree(currentDirHandle, document.getElementById('file-tree'), "");
-        } catch (e) {}
-    });
-
-    btnDeleteFile.addEventListener('click', async () => {
-        if (!activeFileHandle || !activeParentDirHandle) return alert(translate('selectFile'));
-        const target = {
-            handle: activeFileHandle,
-            parentDirHandle: activeParentDirHandle,
-            kind: 'file',
-            name: activeFileHandle.name
-        };
-        try {
-            await deleteEntry(target);
-        } catch (error) {
-            console.error('Erro ao excluir arquivo ativo:', error);
-            alert(translate('deleteError'));
-        }
-    });
-
-    // 6. Eventos de Teclado e LocalStorage
+    // 5. Eventos de Teclado e LocalStorage
     const originalSetItem = localStorage.setItem;
     localStorage.setItem = function(k, v) {
         originalSetItem.apply(this, arguments);

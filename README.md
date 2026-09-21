@@ -2,11 +2,11 @@
 
 > Uma barra lateral local para organizar, abrir e salvar projetos do [Excalidraw](https://excalidraw.com/) em pastas do computador.
 
-**Versão atual:** `v0.1.1` · [Repositório no GitHub](https://github.com/leonardomack/excalidraw-explorer)
+**Versão atual:** `v0.1.2` · [Repositório no GitHub](https://github.com/leonardomack/excalidraw-explorer)
 
 [![Latest Release](https://img.shields.io/github/v/release/leonardomack/excalidraw-explorer?label=latest%20release)](https://github.com/leonardomack/excalidraw-explorer/releases/latest)
 
-[Baixar a release v0.1.1](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.1)
+[Baixar a release v0.1.2](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.2)
 
 > A versão 0.1.1 inclui persistência de imagens, navegação entre pastas e arquivos e manutenção de projetos com criação, renomeação, duplicação, salvamento e exclusão. O projeto ainda possui limitações conhecidas relacionadas ao formato dos arquivos, ao tamanho de imagens incorporadas e à compatibilidade com futuras mudanças do Excalidraw.
 
@@ -35,7 +35,7 @@ O Excalidraw é uma ferramenta de desenho e quadro branco digital acessível pel
 - oferece salvamento manual com `Ctrl+S` ou `Cmd+S`;
 - permite renomear arquivos e pastas pela barra lateral;
 - permite duplicar e excluir arquivos pelo menu contextual;
-- permite criar novas pastas em áreas vazias da árvore;
+- permite criar novas pastas em áreas vazias da árvore ou dentro de outras pastas;
 - preserva imagens e seus arquivos binários associados nos projetos salvos;
 - permite excluir o arquivo ativo mantendo uma cópia `.exw.deleted`.
 
@@ -138,7 +138,7 @@ A barra lateral acompanha o tema encontrado no carregamento da página do Excali
 
 #### Ações e abrir uma pasta
 
-Na parte superior, os três ícones monocromáticos à esquerda representam **Novo**, **Excluir** e **Abrir Projetos**. Depois que uma pasta é conectada, o terceiro ícone passa a representar **Mudar Pasta**. Passe o mouse sobre um ícone para ver sua tooltip. O pin fica alinhado à direita e fixa ou libera a barra lateral.
+Na parte superior, o ícone monocromático à esquerda representa **Abrir Projetos**. Depois que uma pasta é conectada, ele passa a representar **Escolher pasta raíz**. As ações de criar e excluir ficam disponíveis no menu contextual, acessado com o botão direito sobre a árvore. Passe o mouse sobre um ícone para ver sua tooltip. O pin fica alinhado à direita e fixa ou libera a barra lateral.
 
 O ícone de pasta abre o seletor de diretórios. Na primeira utilização ele escolhe a pasta; nas utilizações seguintes, permite trocar a pasta selecionada.
 
@@ -179,7 +179,7 @@ meu-projeto.exw.deleted
 
 Essa cópia é uma medida de recuperação manual: não existe uma função de restauração na interface. Para tentar recuperar o arquivo, copie ou renomeie a versão `.exw.deleted` para `.exw` e verifique o conteúdo antes de abrir. Ao excluir novamente um arquivo com o mesmo nome, a cópia `.deleted` pode ser sobrescrita.
 
-Pastas só podem ser excluídas quando não contêm arquivos. Clique com o botão direito sobre uma pasta e selecione **Novo** para criar um arquivo dentro dela. Em uma área vazia da árvore, selecione **Novo** para criar o arquivo na raiz da pasta selecionada ou **Nova Pasta** para criar uma pasta; nomes já existentes são rejeitados.
+Pastas só podem ser excluídas quando não contêm arquivos. Clique com o botão direito sobre uma pasta e selecione **Novo** para criar um arquivo ou **Nova Pasta** para criar uma subpasta dentro dela. Em uma área vazia da árvore, selecione **Novo** para criar o arquivo na raiz da pasta selecionada ou **Nova Pasta** para criar uma pasta; nomes já existentes são rejeitados.
 
 #### Renomear arquivos e pastas
 
@@ -331,13 +331,13 @@ Este projeto é distribuído sob a [Licença MIT](./LICENSE), que permite usar, 
 
 ## English
 
-**Current version:** `v0.1.1` · [View the repository on GitHub](https://github.com/leonardomack/excalidraw-explorer)
+**Current version:** `v0.1.2` · [View the repository on GitHub](https://github.com/leonardomack/excalidraw-explorer)
 
 [![Latest Release](https://img.shields.io/github/v/release/leonardomack/excalidraw-explorer?label=latest%20release)](https://github.com/leonardomack/excalidraw-explorer/releases/latest)
 
-[Download release v0.1.1](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.1)
+[Download release v0.1.2](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.2)
 
-> Version 0.1.1 includes image persistence, navigation between folders and files, and project maintenance through file creation, renaming, duplication, saving and deletion. The project still has known limitations related to the file format, embedded image size and compatibility with future Excalidraw changes.
+> Version 0.1.2 includes image persistence, navigation between folders and files, and project maintenance through file creation, renaming, duplication, saving and deletion. The project still has known limitations related to the file format, embedded image size and compatibility with future Excalidraw changes.
 
 **Contributor:** [leonardomack](https://github.com/leonardomack)
 
@@ -358,7 +358,7 @@ The add-on provides:
 - manual saving with `Ctrl+S` or `Cmd+S`;
 - renaming files and folders from the sidebar;
 - duplicating and deleting files from the contextual menu;
-- creating new folders in empty areas of the tree;
+- creating new folders in empty areas of the tree or inside existing folders;
 - preserving images and their associated binary files in saved projects;
 - deletion with a `.exw.deleted` copy created first.
 
@@ -450,7 +450,7 @@ The sidebar follows the theme detected when the Excalidraw page loads. The scrip
 
 ### Using the sidebar
 
-At the top, the three monochrome icons on the left represent **New**, **Delete** and **Open Projects**. After a directory is connected, the third icon represents **Change Folder**. Hover over an icon to see its tooltip. The pin is aligned to the right and keeps the sidebar pinned or released.
+At the top, the single monochrome icon on the left represents **Open Projects**. After a directory is connected, it represents **Choose root folder**. File creation and deletion remain available from the contextual menu, opened by right-clicking the tree. Hover over an icon to see its tooltip. The pin is aligned to the right and keeps the sidebar pinned or released.
 
 Click the folder icon to choose a directory or change the current directory. The tree refreshes every five seconds while a directory is connected. Directories are listed before files, and entries are sorted alphabetically within each group.
 
@@ -469,7 +469,7 @@ The save behavior is:
 
 Click **Excluir** to confirm deletion of the active file, or use **Delete** from the contextual menu. The script first writes a copy named `<original>.exw.deleted`, then removes the original. There is no restore button, and a later deletion with the same name can overwrite the `.deleted` copy.
 
-Folders can only be deleted when they contain no files. Right-click a folder and choose **New** to create a file inside it. In an empty area of the tree, choose **New** to create the file at the selected project root or **New Folder** to create a folder; existing names are rejected.
+Folders can only be deleted when they contain no files. Right-click a folder and choose **New** to create a file or **New Folder** to create a subfolder inside it. In an empty area of the tree, choose **New** to create the file at the selected project root or **New Folder** to create a folder; existing names are rejected.
 
 Click the pin icon to keep the sidebar expanded. The pinned state is stored in the `excaliSidebarPinned` cookie for up to one year. When active, the script adds `sidebar-active` to `body` and moves `.excalidraw-container` so the sidebar does not cover the application.
 
