@@ -8,7 +8,7 @@
 
 [Baixar a release v0.1.2](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.2)
 
-> A versão 0.1.1 inclui persistência de imagens, navegação entre pastas e arquivos e manutenção de projetos com criação, renomeação, duplicação, salvamento e exclusão. O projeto ainda possui limitações conhecidas relacionadas ao formato dos arquivos, ao tamanho de imagens incorporadas e à compatibilidade com futuras mudanças do Excalidraw.
+> A versão 0.1.2 aprimora a organização dos projetos com criação de arquivos e pastas pelo menu contextual, navegação entre pastas, seleção da pasta raiz e uma área de trabalho automática chamada `Notas rápidas.exw`. Também simplifica a barra lateral ao manter as ações de criação e exclusão no menu contextual.
 
 **Contribuidor:** [leonardomack](https://github.com/leonardomack)
 
@@ -337,7 +337,7 @@ Este projeto é distribuído sob a [Licença MIT](./LICENSE), que permite usar, 
 
 [Download release v0.1.2](https://github.com/leonardomack/excalidraw-explorer/releases/tag/v0.1.2)
 
-> Version 0.1.2 includes image persistence, navigation between folders and files, and project maintenance through file creation, renaming, duplication, saving and deletion. The project still has known limitations related to the file format, embedded image size and compatibility with future Excalidraw changes.
+> Version 0.1.2 improves project organization with file and folder creation from the contextual menu, folder navigation, root-folder selection and an automatic workspace named `Notas rápidas.exw`. It also simplifies the sidebar by keeping creation and deletion actions in the contextual menu.
 
 **Contributor:** [leonardomack](https://github.com/leonardomack)
 
